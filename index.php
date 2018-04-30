@@ -34,7 +34,8 @@ if (isset($_POST['btn-login'])) {
   // direct towards home.php
   header("Location: home.php");
   
- } else {
+ } 
+    else {
   
   // Set error login message
   $msg = "<div class='alert alert-danger'>
@@ -51,44 +52,46 @@ if (isset($_POST['btn-login'])) {
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
 
- <!-- your css and scripts go here -->
- <!-- ... -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <!-- your css and scripts go here -->
+    <!-- ... -->
 
 
 </head>
+
 <body>
 
- <form class="form-signin" method="post" id="login-form">
-  
-  <h2 class="form-signin-heading">SIGN IN</h2>
-   <?php if(isset($msg)){ echo $msg; } ?>
-        
-   <div class="form-group">
-    <input type="email" class="form-control" placeholder="Email address" name="email" required />
-    <span id="check-e"></span>
-   </div>
+    <form class="form-signin" method="post" id="login-form">
 
-   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password" name="password" required />
-   </div>
+        <h2 class="form-signin-heading">SIGN IN</h2>
+        <?php if(isset($msg)){ echo $msg; } ?>
 
-   <div class="form-group">
-    <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
-    <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
-   </button> 
-    
-   <a href="register.php" class="btn btn-default" style="float:right;">Sign up here</a>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email address" name="email" required />
+            <span id="check-e"></span>
+        </div>
 
-   <a href="forgotPassword.php" class="btn btn-default">Forgot your password?</a>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password" required />
+        </div>
 
-  </div>  
-  
- </form>
- 
+        <div class="form-group">
+            <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
+                <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
+            </button>
+
+            <a href="register.php" class="btn btn-default" style="float:right;">Sign up here</a>
+
+            <a href="forgotPassword.php" class="btn btn-default">Forgot your password?</a>
+
+        </div>
+
     </form>
+
 </body>
+
 </html>
