@@ -6,7 +6,7 @@ if (!isset($_SESSION['userSession'])) {
  header("Location: index.php");
 }
 
-$query = $DBcon->query("SELECT * FROM users WHERE user_id=".$_SESSION['userSession']);
+$query = $DBcon->query("SELECT * FROM adminUsers WHERE ID=".$_SESSION['userSession']);
 $userRow=$query->fetch_array();
 $DBcon->close();
 
@@ -15,21 +15,21 @@ $DBcon->close();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<!-- LINKS -->    
-<?php include ("components/head.php"); ?>  
+<!-- LINKS -->
+<?php include ("components/head.php"); ?>
 
 </head>
 <body>
 
-<!-- NAVBAR -->    
+<!-- NAVBAR -->
 <?php include ("components/adminNavbar.php"); ?>
-    
+
 
 
 <!-- Container  -->
 <div class="container-fluid">
 
-<?php 
+<?php
 include ("components/dbconnect_2.php");
 
 
@@ -64,12 +64,12 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 */
-?>  
+?>
 
 <a href="test.php">klik hier</a>
 </div>
 
-<!-- FOOTER -->    
+<!-- FOOTER -->
 <?php include ("components/footer.php"); ?>
 
 

@@ -6,23 +6,23 @@ if (isset($_SESSION['userSession'])!="") {
 require_once 'dbconnect.php';
 
 if(isset($_POST['btn-signup'])) {
- 
- $uname = strip_tags($_POST['username']);
+
+ $uname = strip_tags($_POST['userName']);
  $email = strip_tags($_POST['email']);
  $upass = strip_tags($_POST['password']);
- 
+
  $uname = $DBcon->real_escape_string($uname);
  $email = $DBcon->real_escape_string($email);
  $upass = $DBcon->real_escape_string($upass);
- 
+
  $hashed_password = password_hash($upass, PASSWORD_DEFAULT); // this function works only in PHP 5.5 or latest version
- 
- $check_email = $DBcon->query("SELECT email FROM users WHERE email='$email'");
+
+ $check_email = $DBcon->query("SELECT email FROM adminUsers WHERE email='$email'");
  $count=$check_email->num_rows;
- 
+
  if ($count==0) {
-  
-  $query = "INSERT INTO users(username,email,password) VALUES('$uname','$email','$hashed_password')";
+
+  $query = "INSERT INTO adminUsers(userName,email,password) VALUES('$uname','$email','$hashed_password')";
 
   if ($DBcon->query($query)) {
    $msg = "<div class='alert alert-success'>
@@ -33,16 +33,16 @@ if(isset($_POST['btn-signup'])) {
       <span class='glyphicon glyphicon-info-sign'></span> &nbsp; error while registering !
      </div>";
   }
-  
+
  } else {
-  
-  
+
+
   $msg = "<div class='alert alert-danger'>
      <span class='glyphicon glyphicon-info-sign'></span> &nbsp; sorry email already taken !
     </div>";
-   
+
  }
- 
+
  $DBcon->close();
 }
 ?>
@@ -65,45 +65,45 @@ if(isset($_POST['btn-signup'])) {
 
 <div class="signin-form">
 
- <div class="container col-md-4 col-md-offset-4">     
-     
-        
+ <div class="container col-md-4 col-md-offset-4">
+
+
        <form class="form-signin" method="post" id="register-form">
-      
+
         <h2 class="form-signin-heading">Sign Up</h2><hr />
-        
+
         <?php
   if (isset($msg)) {
    echo $msg;
   }
   ?>
-          
+
         <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username" name="username" required  />
+        <input type="text" class="form-control" placeholder="username" name="userName" required  />
         </div>
-        
+
         <div class="form-group">
         <input type="email" class="form-control" placeholder="Email address" name="email" required  />
         <span id="check-e"></span>
         </div>
-        
+
         <div class="form-group">
         <input type="password" class="form-control" placeholder="Password" name="password" required  />
         </div>
-        
+
       <hr />
-        
+
         <div class="form-group">
             <button type="submit" class="btn btn-default" name="btn-signup">
       <span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account
-   </button> 
+   </button>
             <a href="index.php" class="btn btn-default" style="float:right;">Log In Here</a>
-        </div> 
-      
+        </div>
+
       </form>
 
     </div>
-    
+
 </div>
 
 </body>
