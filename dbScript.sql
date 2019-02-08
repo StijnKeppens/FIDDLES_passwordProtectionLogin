@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS `adminUsers` (
   `email` varchar(60) NOT NULL,
   `language` varchar(10),
   `password` varchar(255) NOT NULL,
+  `active` boolean,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
